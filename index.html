@@ -21,8 +21,9 @@
       --beige: #e7ddcf;
       --line: rgba(26,26,26,0.10);
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    * { box-sizing: border-box; margin: 0; padding: 0; max-width: 100%; }
+    img, svg, canvas, video { max-width: 100%; height: auto; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
     body {
       font-family: 'Montserrat', system-ui, sans-serif;
       color: var(--ink);
@@ -103,7 +104,7 @@
     .trust span { display: flex; align-items: center; gap: 6px; }
 
     /* ---- SECTIONS ---- */
-    section { padding: 88px 0; }
+    section { padding: 88px 0; max-width: 100%; overflow-x: hidden; }
     .section-title { text-align: center; margin-bottom: 56px; }
     .section-title .kicker { color: var(--gold); font-size: 12px; letter-spacing: .22em; text-transform: uppercase; font-weight: 600; margin-bottom: 12px; }
     .section-title h2 { font-family: 'Playfair Display', serif; font-size: clamp(28px, 4vw, 46px); font-weight: 700; margin-bottom: 12px; }
@@ -136,7 +137,7 @@
     .step p { color: var(--muted); font-size: 14.5px; }
 
     /* ---- footer ---- */
-    footer { padding: 60px 0 30px; background: #1a1814; color: #f3efe6; }
+    footer { padding: 60px 0 30px; background: #1a1814; color: #f3efe6; max-width: 100%; overflow-x: hidden; }
     footer .logo { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 700; margin-bottom: 12px; }
     footer .logo .accent { color: var(--gold); }
     footer p { color: #c0b8a8; font-size: 14px; max-width: 360px; margin-bottom: 24px; }
