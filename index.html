@@ -144,6 +144,7 @@
     footer h4 { font-size: 13px; color: #fff; margin-bottom: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; }
     footer a { color: #c0b8a8; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px; transition: color .2s; }
     footer a:hover { color: var(--gold); }
+    .contact-btn { width: 100%; text-align: left; border: 1px solid rgba(255,255,255,0.12); padding: 10px 12px; border-radius: 10px; cursor: pointer; font-family: inherit; }
     .copy { text-align: center; color: #8a8278; font-size: 12.5px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.08); }
     .cta-gold {
       display: inline-block; padding: 13px 30px; border-radius: 999px;
@@ -335,10 +336,11 @@
           <a href="tel:+79221551768" class="cta-gold" style="margin-top:8px;">Позвонить</a>
         </div>
         <div>
-          <h4>Контакты</h4>
-          <a href="tel:+79221551768">Телефон</a>
-          <a href="https://max.ru/" target="_blank" rel="noopener">Макс</a>
-          <a href="#top">На главную</a>
+          <h4>Связь</h4>
+          <a href="tel:+79221551768" class="contact-btn">📞 Позвонить: +7 922 155 17 68</a>
+          <button type="button" class="contact-btn" onclick="copyPhone()">📋 Скопировать номер</button>
+          <a href="https://max.ru/" target="_blank" rel="noopener" class="contact-btn">💬 Макс</a>
+          <a href="#top" class="contact-btn">На главную</a>
         </div>
         <div>
           <h4>Информация</h4>
@@ -368,6 +370,38 @@
         const y = (e.clientY / window.innerHeight - 0.5) * 16;
         halo.style.transform = `translate(${x}px, ${y}px)`;
       });
+    }
+  <script>
+    function copyPhone() {
+      const phone = "+7 922 155 17 68";
+      const done = () => {
+        const btn = document.activeElement;
+        if (btn && btn.textContent) {
+          const old = btn.textContent;
+          btn.textContent = "Скопировано ✅";
+          setTimeout(() => { btn.textContent = old; }, 1200);
+        }
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(phone).then(done).catch(() => {
+          // fallback
+          const ta = document.createElement('textarea');
+          ta.value = phone;
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand('copy');
+          document.body.removeChild(ta);
+          done();
+        });
+      } else {
+        const ta = document.createElement('textarea');
+        ta.value = phone;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        done();
+      }
     }
   </script>
 </body>
